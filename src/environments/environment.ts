@@ -1,9 +1,18 @@
+import { AppComponent } from './../app/app.component';
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  firebase: {
+    AppComponentapiKey: "AIzaSyCF3eiOUFjkweiTRRxkvLzFCall7dpoxZw",
+    authDomain: "oshop-7c3c1.firebaseapp.com",
+    databaseURL: "https://oshop-7c3c1.firebaseio.com",
+    projectId: "oshop-7c3c1",
+    storageBucket: "oshop-7c3c1.appspot.com",
+    messagingSenderId: "806229120743"
+  }
 };
 
 /*

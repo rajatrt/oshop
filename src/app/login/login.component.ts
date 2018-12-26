@@ -8,13 +8,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private afAuth:AngularFireAuth) { }
+  constructor(private afAuth:AngularFireAuth) {
+    afAuth.authState.subscribe(x => console.log(x))
+  }
 
   ngOnInit() {
   }
 
   login(){
-    console.log('--->>>');
     this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider());
   }
 }

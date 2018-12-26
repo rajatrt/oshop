@@ -7,8 +7,13 @@ import * as firebase from 'firebase';
   styleUrls: ['./bt-navbar.component.scss']
 })
 export class BtNavbarComponent implements OnInit {
+  user:firebase.User;
 
-  constructor(private afAuth: AngularFireAuth) { }
+  constructor(private afAuth: AngularFireAuth) {
+    afAuth.authState.subscribe((user) => {
+      this.user = user;
+    });
+  }
 
   ngOnInit() {
   }

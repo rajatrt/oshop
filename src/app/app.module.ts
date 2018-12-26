@@ -1,3 +1,4 @@
+import { AuthService } from './auth.service';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -19,7 +20,6 @@ import { MyOrdersComponent } from './my-orders/my-orders.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.component';
 import { LoginComponent } from './login/login.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +53,9 @@ import { LoginComponent } from './login/login.component';
      { path: 'admin/orders', component: AdminOrdersComponent }
     ])
   ],
-  providers: [],
+  providers: [
+    AuthService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

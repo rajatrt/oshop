@@ -2,7 +2,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
 import { AngularFireAuth } from 'angularfire2/auth';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable({
   providedIn: 'root'

@@ -12,6 +12,7 @@ import { take } from 'rxjs/operators';
 export class ProductFormComponent implements OnInit {
   categories$;
   product;
+  id;
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -19,8 +20,8 @@ export class ProductFormComponent implements OnInit {
     private productService: ProductService) {
     this.categories$ = categoryService.getCategories();
 
-    let id = route.snapshot.paramMap.get('id');
-    if(id) productService.get(id).pipe(take(1)).subscribe(product => this.product = product);
+    this.id = route.snapshot.paramMap.get('id');
+    if(this.id) productService.get(this.id).pipe(take(1)).subscribe(product => this.product = product);
 
   }
 
@@ -28,7 +29,11 @@ export class ProductFormComponent implements OnInit {
   }
 
   save(product) {
-    this.productService.create(product);
+    if(this.id) this.productService.update(this.id,product);
+    else this.productService.create(product);
+    
     this.router.navigate(['/admin/products']);
   }
+
+
 }

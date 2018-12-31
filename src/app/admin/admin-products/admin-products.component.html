@@ -16,7 +16,6 @@
         <tr *ngFor="let p of filteredProduct">
            <td>{{ p.title }}</td>
            <td>{{ p.price }}</td>
-           <td> {{p.$key}} </td>
            <td>
                <a [routerLink]="['/admin/products/',p.$key]">Edit</a>
            </td>

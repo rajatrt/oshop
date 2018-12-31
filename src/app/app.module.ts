@@ -10,8 +10,7 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CustomFormsModule } 'ng2-validation';
-
+import { CustomFormsModule } from 'ng2-validation';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { environment } from '../environments/environment';
@@ -53,7 +52,7 @@ import { ProductService } from './product.service';
     AngularFireDatabaseModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
-     { path: '', component: HomeComponent },
+     { path: '', component: ProductsComponent},
      { path: 'products', component: ProductsComponent },
      { path: 'shopping-cart', component: ShoppingCartComponent },
      { path: 'login', component: LoginComponent },

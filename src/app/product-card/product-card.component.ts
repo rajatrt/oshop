@@ -1,5 +1,7 @@
+import { ShoppingCartService } from './../shopping-cart.service';
 import { Product } from './../models/products';
 import { Component, Input } from '@angular/core';
+import { AUTH_PROVIDERS } from 'angularfire2/auth';
 
 @Component({
   selector: 'product-card',
@@ -9,6 +11,9 @@ import { Component, Input } from '@angular/core';
 export class ProductCardComponent {
   @Input('product') product: Product
   @Input('show-actions') showActions = true;
-  constructor() { }
+  constructor(private cartService : ShoppingCartService) { }
 
+  addToCart(product : Product){
+    this.cartService.addToCart(product);
+  }
 }

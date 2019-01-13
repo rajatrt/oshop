@@ -1,3 +1,4 @@
+import { ShoppingCartService } from './../shopping-cart.service';
 import { AppUser } from './../models/app-user';
 import { AuthService } from './../auth.service';
 import { Component, OnInit } from '@angular/core';
@@ -8,12 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BtNavbarComponent implements OnInit {
   appUser: AppUser
+  shoppingCartItemCount: number;
 
-  constructor(public auth: AuthService) {
-    auth.appUser$.subscribe(appUser => this.appUser = appUser);
-  }
+  constructor(public auth: AuthService, private shoppingCartService: ShoppingCartService) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.auth.appUser$.subscribe(appUser => this.appUser = appUser);
+    let cart$ = await this.shoppingCartService.getCart();
+
+    cart$.subscribe(cart => {
+      this.shoppingCartItemCount = 0;
+      for(let productId in cart.items){
+        this.shoppingCartItemCount += cart.items[productId].quantity;
+      }
+    })
   }
   logout(){
     this.auth.logout();
